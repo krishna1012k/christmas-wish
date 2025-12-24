@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Merry Christmas ✨</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(180deg, #0b1d3a, #020817);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: #fff;
+}
+
+/* Story Card */
+.story {
+    width: 360px;
+    height: 640px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    border-radius: 30px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(255,255,255,0.15);
+    animation: fadeIn 2s ease;
+    position: relative;
+    z-index: 2;
+}
+
+/* Photo */
+.photo {
+    width: 220px;
+    height: 220px;
+    margin: 20px auto;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid rgba(255,255,255,0.6);
+    box-shadow: 0 0 25px rgba(255,255,255,0.4);
+    animation: float 3s ease-in-out infinite;
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Text */
+h1 {
+    font-size: 2.4rem;
+    color: #ffefc1;
+    text-shadow: 0 0 20px rgba(255,239,193,0.9);
+    animation: glow 2s infinite alternate;
+}
+
+.name {
+    font-size: 1.4rem;
+    margin-top: 10px;
+    opacity: 0.95;
+}
+
+.msg {
+    margin-top: 15px;
+    font-size: 1.05rem;
+    opacity: 0.9;
+    line-height: 1.5;
+}
+
+.icons {
+    font-size: 2.2rem;
+    margin-top: 20px;
+    animation: bounce 2s infinite;
+}
+
+/* Music Button */
+.music-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 18px;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+}
+
+/* Animations */
+@keyframes glow {
+    from { text-shadow: 0 0 10px #ffd700; }
+    to { text-shadow: 0 0 30px #ffefc1; }
+}
+
+@keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* Snow */
+.snow {
+    position: fixed;
+    top: -10px;
+    color: white;
+    pointer-events: none;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to { transform: translateY(110vh); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="story">
+    <h1>Merry Christmas 🎄</h1>
+
+    <div class="photo">
+        <img src="photo.jpg" alt="Photo">
+    </div>
+
+    <div class="name">✨ For Someone Special ✨</div>
+
+    <div class="msg">
+        May your heart be warm,<br>
+        your days be bright,<br>
+        and your life sparkle with joy 🤍
+    </div>
+
+    <div class="icons">🎅 🎄 🎁</div>
+
+    <button class="music-btn" onclick="playMusic()">🔊 Play Music</button>
+</div>
+
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function playMusic() {
+    document.getElementById("bgMusic").play();
+}
+
+/* Snowfall */
+function snow() {
+    const flake = document.createElement("div");
+    flake.className = "snow";
+    flake.innerHTML = "❄";
+    flake.style.left = Math.random() * window.innerWidth + "px";
+    flake.style.fontSize = Math.random() * 10 + 12 + "px";
+    flake.style.animationDuration = Math.random() * 3 + 3 + "s";
+    document.body.appendChild(flake);
+
+    setTimeout(() => flake.remove(), 6000);
+}
+setInterval(snow, 200);
+</script>
+
+</body>
+</html>
